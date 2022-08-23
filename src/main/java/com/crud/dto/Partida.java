@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -24,6 +25,9 @@ public class Partida {
 	@JsonIgnore
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "partida")
 	private List<Usuario> usuarios;
+	
+	@ManyToOne
+	private Videojuego videojuego;
 	
 	// Constructores
 	public Partida() {
@@ -52,5 +56,13 @@ public class Partida {
 
 	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
+	}
+
+	public Videojuego getVideojuego() {
+		return videojuego;
+	}
+
+	public void setVideojuego(Videojuego videojuego) {
+		this.videojuego = videojuego;
 	}
 }
