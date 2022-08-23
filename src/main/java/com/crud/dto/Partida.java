@@ -7,6 +7,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -21,7 +22,7 @@ public class Partida {
 	private Long codigo;
 	
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "partida")
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "partida")
 	private List<Usuario> usuarios;
 	
 	// Constructores
@@ -44,7 +45,7 @@ public class Partida {
 	}
 
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Usuario")
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "Usuario")
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}

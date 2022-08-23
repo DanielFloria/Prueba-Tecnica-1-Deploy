@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -30,7 +31,7 @@ public class Usuario {
 	private String steamUser;
 	
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
 	private List<Partida> partidas;
 
 	public Usuario() {
@@ -84,7 +85,7 @@ public class Usuario {
 	}
 
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Partida")
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "Partida")
 	public List<Partida> getPartidas() {
 		return partidas;
 	}
